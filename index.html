@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name</title>
+  <style>
+    /*
+      Minimal academic homepage inspired by classic GitHub Pages academic sites.
+      Save this file as index.html in your GitHub Pages repository.
+    */
+
+    :root {
+      --text: #222;
+      --muted: #666;
+      --link: #267CB9;
+      --rule: #e5e5e5;
+      --max-width: 760px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 46px auto 70px;
+      padding: 0 24px;
+    }
+
+    header {
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .links,
+    .nav {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+    h2 {
+      margin: 30px 0 12px;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    h3 {
+      margin: 18px 0 4px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin-top: 8px;
+      padding-left: 26px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      margin: 28px 0;
+    }
+
+    .publication {
+      margin: 0 0 18px;
+    }
+
+    .publication-title {
+      font-weight: 700;
+    }
+
+    .publication-meta {
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        margin-top: 28px;
+        padding: 0 18px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>Your Name</h1>
+      <p class="subtitle">Your position, Department / Institution</p>
+
+      <p class="links">
+        <a href="https://github.com/yourusername">github</a> |
+        <a href="https://scholar.google.com/">google scholar</a> |
+        <a href="https://www.linkedin.com/">linkedin</a> |
+        <a href="mailto:you@example.com">email</a>
+      </p>
+
+      <p class="nav">
+        <a href="#about">About Me</a> |
+        <a href="#research">Research Highlights</a> |
+        <a href="#publications">Publications</a> |
+        <a href="#teaching">Teaching</a> |
+        <a href="cv.pdf">CV</a>
+      </p>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a [your title] at [your institution]. My research interests include
+        [area 1], [area 2], and [area 3]. I am especially interested in
+        [one-sentence description of your current research direction].
+      </p>
+
+      <p>
+        Previously, I completed my [Ph.D./postdoc/etc.] at [institution], where I
+        worked with [advisor/collaborators]. More information about my work,
+        publications, and academic service can be found in my <a href="cv.pdf">CV</a>.
+      </p>
+
+      <p>
+        I am best reached by email at <a href="mailto:you@example.com">you@example.com</a>.
+      </p>
+    </section>
+
+    <hr />
+
+    <section id="research">
+      <h2>Research Highlights</h2>
+      <p>A full list of my publications can be found <a href="#publications">below</a>.</p>
+
+      <ul>
+        <li>
+          <strong>Project or theme 1:</strong> short description of a research direction.
+          [<a href="#">Paper</a>] [<a href="#">Code</a>]
+        </li>
+        <li>
+          <strong>Project or theme 2:</strong> short description of another research direction.
+          [<a href="#">Paper</a>]
+        </li>
+        <li>
+          <strong>Project or theme 3:</strong> short description of a third research direction.
+          [<a href="#">Webpage</a>] [<a href="#">Slides</a>]
+        </li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <div class="publication">
+        <div class="publication-title">Title of Your Paper Goes Here</div>
+        <div>Your Name, Coauthor One, Coauthor Two</div>
+        <div class="publication-meta">Journal or Conference, 2026</div>
+        <div>[<a href="#">PDF</a>] [<a href="#">Code</a>] [<a href="#">BibTeX</a>]</div>
+      </div>
+
+      <div class="publication">
+        <div class="publication-title">Another Paper Title Goes Here</div>
+        <div>Your Name and Coauthor</div>
+        <div class="publication-meta">Preprint, 2025</div>
+        <div>[<a href="#">PDF</a>] [<a href="#">arXiv</a>]</div>
+      </div>
+
+      <div class="publication">
+        <div class="publication-title">A Third Paper Title Goes Here</div>
+        <div>Coauthor, Your Name, Another Coauthor</div>
+        <div class="publication-meta">Conference Name, 2024</div>
+        <div>[<a href="#">PDF</a>] [<a href="#">Project Page</a>]</div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul>
+        <li>Course name, Institution, Semester Year</li>
+        <li>Course name, Institution, Semester Year</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Last updated: May 2026.</p>
+    </footer>
+  </main>
+</body>
+</html>
