@@ -47,6 +47,19 @@ ssh amarel 'pwd; whoami'
 If SSH requires Duo, VPN, keys, or Rutgers-specific authentication, pause and
 ask the user to complete that step.
 
+## Off-Campus Access
+
+If the user is not physically on the Rutgers campus network, ask them to connect
+to the Rutgers VPN before trying Amarel. Rutgers VPN uses Cisco AnyConnect /
+Cisco Secure Client. The setup entry point is:
+
+```text
+https://vpn.rutgers.edu
+```
+
+After the VPN is connected, retry only a lightweight SSH test before staging or
+running any jobs.
+
 ## Agent Runtime Profile
 
 For fully automated remote work, the agent environment needs permission to use

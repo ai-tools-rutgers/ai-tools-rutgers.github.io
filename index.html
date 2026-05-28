@@ -432,6 +432,34 @@
       font-size: 0.93rem;
     }
 
+    .notice-card {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      margin: 18px 0 0;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(63, 111, 134, 0.22);
+      background: #f3f8f8;
+    }
+
+    .notice-card i {
+      color: var(--primary-strong);
+    }
+
+    .notice-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .notice-card a {
+      color: var(--primary-strong);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
     .code-line {
       display: block;
       margin-top: 8px;
@@ -573,7 +601,7 @@
       <div class="hero-main">
         <p class="eyebrow"><i data-lucide="sparkles" aria-hidden="true"></i> Practical AI for Rutgers academic work</p>
         <h1 class="hero-title">AI tools for academics at Rutgers</h1>
-        <p class="hero-copy">An easy-to-use guide for working with AI, as well as running code using GPUs on the Rutgers supercomputer with no prior programming knowledge.</p>
+        <p class="hero-copy">An easy-to-use guide for working with AI and running code on GPUs through Amarel, Rutgers' high-performance computing system, with no prior programming knowledge.</p>
         <div class="hero-actions">
           <a class="button-link" href="#workspaces"><i data-lucide="mouse-pointer-click" aria-hidden="true"></i>Choose a workspace</a>
           <a class="button-link secondary" href="#amarel"><i data-lucide="server" aria-hidden="true"></i>Set up Amarel workflow</a>
@@ -672,6 +700,10 @@
             <strong>3. Run through Slurm</strong>
             <p>The agent should keep heavy compute off the login node, use scratch storage, and pull results back locally.</p>
           </div>
+        </div>
+        <div class="notice-card">
+          <i data-lucide="shield-check" aria-hidden="true"></i>
+          <p><strong>Off campus?</strong> Connect to the Rutgers VPN first using Cisco AnyConnect or Cisco Secure Client, then let the agent try Amarel. Rutgers VPN setup starts at <a href="https://vpn.rutgers.edu" target="_blank" rel="noreferrer noopener">vpn.rutgers.edu</a>.</p>
         </div>
         <span class="code-line">ssh amarel 'hostname'</span>
         <div class="button-row">
