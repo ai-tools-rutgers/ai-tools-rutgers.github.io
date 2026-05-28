@@ -3,19 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name</title>
+  <title>AI tools for academics at Rutgers</title>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   <style>
-    /*
-      Minimal academic homepage inspired by classic GitHub Pages academic sites.
-      Save this file as index.html in your GitHub Pages repository.
-    */
-
     :root {
-      --text: #222;
-      --muted: #666;
-      --link: #267CB9;
-      --rule: #e5e5e5;
-      --max-width: 760px;
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-soft: #f1f5f9;
+      --text: #172033;
+      --muted: #5f6878;
+      --primary: #3f6f86;
+      --primary-strong: #244f60;
+      --blue: #4f73a7;
+      --green: #5f8a7a;
+      --gold: #a78245;
+      --lavender: #7a6f9b;
+      --border: #d9e0ea;
+      --shadow: 0 14px 34px rgba(23, 32, 51, 0.08);
+      --radius: 14px;
+      --max-width: 1120px;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     html {
@@ -24,217 +35,891 @@
 
     body {
       margin: 0;
-      padding: 0;
-      background: #fff;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      font-family: Georgia, "Times New Roman", Times, serif;
-      font-size: 16px;
       line-height: 1.55;
     }
 
-    .page {
-      max-width: var(--max-width);
-      margin: 46px auto 70px;
-      padding: 0 24px;
-    }
-
-    header {
-      margin-bottom: 26px;
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: 34px;
-      font-weight: 400;
-      line-height: 1.15;
-    }
-
-    .subtitle {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .links,
-    .nav {
-      margin: 6px 0;
-      font-size: 15px;
-    }
-
     a {
-      color: var(--link);
-      text-decoration: none;
+      color: inherit;
     }
 
-    a:hover,
-    a:focus {
-      text-decoration: underline;
+    .page {
+      width: min(100%, var(--max-width));
+      margin: 0 auto;
+      padding: 28px 24px 56px;
     }
 
-    h2 {
-      margin: 30px 0 12px;
-      font-size: 22px;
-      font-weight: 400;
+    .site-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+      padding: 14px 0 28px;
     }
 
-    h3 {
-      margin: 18px 0 4px;
-      font-size: 17px;
-      font-weight: 700;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--primary-strong);
+      font-weight: 800;
+      letter-spacing: 0.01em;
     }
 
-    p {
-      margin: 0 0 14px;
+    .brand-mark,
+    .resource-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border-radius: var(--radius);
     }
 
-    ul {
-      margin-top: 8px;
-      padding-left: 26px;
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      background: var(--primary);
+      color: #fff;
     }
 
-    li {
-      margin: 7px 0;
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
     }
 
-    hr {
-      border: 0;
-      border-top: 1px solid var(--rule);
-      margin: 28px 0;
-    }
-
-    .publication {
-      margin: 0 0 18px;
-    }
-
-    .publication-title {
-      font-weight: 700;
-    }
-
-    .publication-meta {
+    .top-nav a {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
       color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: border-color 160ms var(--ease), color 160ms var(--ease), transform 160ms var(--ease);
+    }
+
+    .top-nav a:hover {
+      border-color: var(--primary);
+      color: var(--primary-strong);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      margin-bottom: 44px;
+    }
+
+    .hero-main {
+      padding: 36px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #ffffff 0%, #f4f8f9 48%, #eef3f8 100%);
+      border: 1px solid rgba(63, 111, 134, 0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--primary-strong);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-title {
+      margin: 0 0 16px;
+      font-size: clamp(2.45rem, 5vw, 4.7rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.94rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background 180ms var(--ease), border-color 180ms var(--ease), color 180ms var(--ease), transform 180ms var(--ease);
+    }
+
+    .button-link:hover {
+      background: var(--primary-strong);
+      transform: translateY(-1px);
+    }
+
+    .button-link.secondary {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button-link.secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary-strong);
+      background: #fff;
+    }
+
+    section {
+      margin-bottom: 46px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 1.75rem;
+      letter-spacing: 0;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tutorial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .resource-card,
+    .tool-card,
+    .guide-card,
+    .faq-card {
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+      padding: 22px;
+    }
+
+    .resource-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .resource-icon {
+      width: 44px;
+      height: 44px;
+      color: #fff;
+    }
+
+    .resource-icon.teal {
+      background: var(--primary);
+    }
+
+    .resource-icon.blue {
+      background: var(--blue);
+    }
+
+    .resource-icon.green {
+      background: var(--green);
+    }
+
+    .resource-icon.gold {
+      background: var(--gold);
+    }
+
+    .resource-icon.lavender {
+      background: var(--lavender);
+    }
+
+    .resource-card h3 {
+      margin: 0;
+      font-size: 1.12rem;
+    }
+
+    .resource-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .resource-card .button-link {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      min-height: 0;
+      border: 0;
+      border-radius: var(--radius);
+      background: #0f172a;
+    }
+
+    .category-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .category-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 180ms var(--ease), border-color 180ms var(--ease), color 180ms var(--ease), transform 180ms var(--ease);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .category-button:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .category-button.active {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+
+    .tool-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(236px, 1fr));
+    }
+
+    .tool-card {
+      position: relative;
+      padding: 20px;
+      cursor: default;
+      transition: transform 200ms var(--ease), border-color 200ms var(--ease);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(204, 0, 51, 0.35);
+    }
+
+    .tool-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tool-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius);
+      background: #edf5ff;
+      color: var(--blue);
+    }
+
+    .tool-name {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .tool-category {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: var(--radius);
+      background: #edf5f4;
+      color: var(--primary-strong);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .tool-summary {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      min-height: 68px;
+    }
+
+    .tool-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      color: var(--primary-strong);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .guide-card {
+      padding: 24px;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .workflow-step {
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+    }
+
+    .workflow-step strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .workflow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .code-line {
+      display: block;
+      margin-top: 8px;
+      padding: 11px 12px;
+      background: #101827;
+      border-radius: var(--radius);
+      color: #f8fafc;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .faq-card {
+      padding: 24px;
+    }
+
+    .faq-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .faq-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tooltip {
+      position: fixed;
+      z-index: 30;
+      width: min(320px, calc(100vw - 40px));
+      max-width: 340px;
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.16);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 180ms var(--ease), transform 180ms var(--ease);
+      color: var(--text);
+      font-size: 0.94rem;
+    }
+
+    .tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tooltip h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .tooltip p {
+      margin: 0 0 10px;
+    }
+
+    .tooltip a {
+      color: var(--primary-strong);
+      text-decoration: none;
+      font-weight: 800;
     }
 
     footer {
-      margin-top: 36px;
+      padding: 8px 0 36px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .lucide {
+      width: 19px;
+      height: 19px;
+      stroke-width: 2.25;
+    }
+
+    @media (max-width: 920px) {
+      .site-header {
+        grid-template-columns: 1fr;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+      }
+
+      .resource-grid,
+      .tutorial-grid,
+      .workflow-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
       .page {
-        margin-top: 28px;
-        padding: 0 18px;
+        padding: 20px 16px 42px;
       }
 
-      h1 {
-        font-size: 30px;
+      .hero-main,
+      .resource-card,
+      .guide-card,
+      .faq-card {
+        padding: 20px;
+      }
+
+      .hero-title {
+        font-size: 2.55rem;
+      }
+
+      .video-frame {
+        aspect-ratio: 16 / 10;
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <header>
-      <h1>Your Name</h1>
-      <p class="subtitle">Your position, Department / Institution</p>
-
-      <p class="links">
-        <a href="https://github.com/yourusername">github</a> |
-        <a href="https://scholar.google.com/">google scholar</a> |
-        <a href="https://www.linkedin.com/">linkedin</a> |
-        <a href="mailto:you@example.com">email</a>
-      </p>
-
-      <p class="nav">
-        <a href="#about">About Me</a> |
-        <a href="#research">Research Highlights</a> |
-        <a href="#publications">Publications</a> |
-        <a href="#teaching">Teaching</a> |
-        <a href="cv.pdf">CV</a>
-      </p>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><i data-lucide="graduation-cap"></i></span>
+        <span>Rutgers AI Toolkit</span>
+      </div>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#start">Start</a>
+        <a href="#workspaces">AI Workspaces</a>
+        <a href="#tools">Tool Directory</a>
+        <a href="#amarel">Amarel</a>
+        <a href="#faq">FAQ</a>
+      </nav>
     </header>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I am a [your title] at [your institution]. My research interests include
-        [area 1], [area 2], and [area 3]. I am especially interested in
-        [one-sentence description of your current research direction].
-      </p>
-
-      <p>
-        Previously, I completed my [Ph.D./postdoc/etc.] at [institution], where I
-        worked with [advisor/collaborators]. More information about my work,
-        publications, and academic service can be found in my <a href="cv.pdf">CV</a>.
-      </p>
-
-      <p>
-        I am best reached by email at <a href="mailto:you@example.com">you@example.com</a>.
-      </p>
-    </section>
-
-    <hr />
-
-    <section id="research">
-      <h2>Research Highlights</h2>
-      <p>A full list of my publications can be found <a href="#publications">below</a>.</p>
-
-      <ul>
-        <li>
-          <strong>Project or theme 1:</strong> short description of a research direction.
-          [<a href="#">Paper</a>] [<a href="#">Code</a>]
-        </li>
-        <li>
-          <strong>Project or theme 2:</strong> short description of another research direction.
-          [<a href="#">Paper</a>]
-        </li>
-        <li>
-          <strong>Project or theme 3:</strong> short description of a third research direction.
-          [<a href="#">Webpage</a>] [<a href="#">Slides</a>]
-        </li>
-      </ul>
-    </section>
-
-    <hr />
-
-    <section id="publications">
-      <h2>Publications</h2>
-
-      <div class="publication">
-        <div class="publication-title">Title of Your Paper Goes Here</div>
-        <div>Your Name, Coauthor One, Coauthor Two</div>
-        <div class="publication-meta">Journal or Conference, 2026</div>
-        <div>[<a href="#">PDF</a>] [<a href="#">Code</a>] [<a href="#">BibTeX</a>]</div>
-      </div>
-
-      <div class="publication">
-        <div class="publication-title">Another Paper Title Goes Here</div>
-        <div>Your Name and Coauthor</div>
-        <div class="publication-meta">Preprint, 2025</div>
-        <div>[<a href="#">PDF</a>] [<a href="#">arXiv</a>]</div>
-      </div>
-
-      <div class="publication">
-        <div class="publication-title">A Third Paper Title Goes Here</div>
-        <div>Coauthor, Your Name, Another Coauthor</div>
-        <div class="publication-meta">Conference Name, 2024</div>
-        <div>[<a href="#">PDF</a>] [<a href="#">Project Page</a>]</div>
+    <section class="hero" id="start">
+      <div class="hero-main">
+        <p class="eyebrow"><i data-lucide="sparkles" aria-hidden="true"></i> Practical AI for Rutgers academic work</p>
+        <h1 class="hero-title">AI tools for academics at Rutgers</h1>
+        <p class="hero-copy">An easy-to-use guide for working with AI, as well as running code using GPUs on the Rutgers supercomputer with no prior programming knowledge.</p>
+        <div class="hero-actions">
+          <a class="button-link" href="#workspaces"><i data-lucide="mouse-pointer-click" aria-hidden="true"></i>Choose a workspace</a>
+          <a class="button-link secondary" href="#amarel"><i data-lucide="server" aria-hidden="true"></i>Set up Amarel workflow</a>
+        </div>
       </div>
     </section>
 
-    <hr />
+    <section id="workspaces">
+      <div class="section-heading">
+        <i data-lucide="layout-dashboard" aria-hidden="true"></i>
+        <h2>AI Workspaces</h2>
+      </div>
+      <p class="section-intro">These are the main entry points. Use ChatGPT for browser-based work, Codex or Claude Code when an agent should operate inside a project folder, and the tutorial when you want a guided introduction.</p>
+      <div class="resource-grid">
+        <article class="resource-card">
+          <div class="resource-top">
+            <span class="resource-icon teal" aria-hidden="true"><i data-lucide="message-circle"></i></span>
+            <h3>ChatGPT in the browser</h3>
+          </div>
+          <p>Best for drafting, explaining, planning, data analysis, course materials, and lightweight code help.</p>
+          <a class="button-link" href="https://chatgpt.com/" target="_blank" rel="noreferrer noopener"><i data-lucide="external-link" aria-hidden="true"></i>Open ChatGPT</a>
+        </article>
 
-    <section id="teaching">
-      <h2>Teaching</h2>
-      <ul>
-        <li>Course name, Institution, Semester Year</li>
-        <li>Course name, Institution, Semester Year</li>
-      </ul>
+        <article class="resource-card">
+          <div class="resource-top">
+            <span class="resource-icon blue" aria-hidden="true"><i data-lucide="terminal"></i></span>
+            <h3>OpenAI Codex CLI</h3>
+          </div>
+          <p>Install a local coding agent that can inspect a repository, edit files, run commands, and help manage research software.</p>
+          <a class="button-link" href="https://github.com/openai/codex" target="_blank" rel="noreferrer noopener"><i data-lucide="download" aria-hidden="true"></i>Download Codex</a>
+        </article>
+
+        <article class="resource-card">
+          <div class="resource-top">
+            <span class="resource-icon green" aria-hidden="true"><i data-lucide="bot"></i></span>
+            <h3>Claude Code</h3>
+          </div>
+          <p>Install Anthropic's terminal coding agent for code review, project navigation, refactoring, and automation tasks.</p>
+          <a class="button-link" href="https://claude.com/claude-code" target="_blank" rel="noreferrer noopener"><i data-lucide="download" aria-hidden="true"></i>Download Claude Code</a>
+        </article>
+      </div>
+
+      <div class="tutorial-grid">
+        <article class="resource-card">
+          <div class="resource-top">
+            <span class="resource-icon gold" aria-hidden="true"><i data-lucide="play-circle"></i></span>
+            <h3>Codex tutorial</h3>
+          </div>
+          <p>Watch a guided walkthrough before asking a coding agent to change files, run commands, or connect to Amarel.</p>
+          <iframe class="video-frame" src="https://www.youtube.com/embed/tIb_TzVNbDM?list=PL4cUxeGkcC9iDBeA8IyR1IE1kl4w5IDEG" title="Codex tutorial video" allowfullscreen></iframe>
+        </article>
+
+        <article class="resource-card">
+          <div class="resource-top">
+            <span class="resource-icon lavender" aria-hidden="true"><i data-lucide="play-circle"></i></span>
+            <h3>Claude Code tutorial</h3>
+          </div>
+          <p>Watch an introduction to Claude Code before using it to inspect projects, edit code, and run terminal workflows.</p>
+          <iframe class="video-frame" src="https://www.youtube.com/embed/6eBSHbLKuN0" title="Claude Code tutorial video" allowfullscreen></iframe>
+        </article>
+      </div>
     </section>
 
-    <footer>
-      <p>Last updated: May 2026.</p>
-    </footer>
+    <section id="tools">
+      <div class="section-heading">
+        <i data-lucide="blocks" aria-hidden="true"></i>
+        <h2>Tool Directory</h2>
+      </div>
+      <p class="section-intro">Browse by academic task. The cards stay short on purpose: pick a category, scan the tools, then open the one that fits the work in front of you.</p>
+      <div class="category-bar" role="tablist" aria-label="Tool categories">
+        <button class="category-button active" data-category="Writing" type="button"><i data-lucide="pen-line" aria-hidden="true"></i>Writing</button>
+        <button class="category-button" data-category="Research" type="button"><i data-lucide="search" aria-hidden="true"></i>Research</button>
+        <button class="category-button" data-category="Teaching" type="button"><i data-lucide="presentation" aria-hidden="true"></i>Teaching</button>
+        <button class="category-button" data-category="Productivity" type="button"><i data-lucide="list-checks" aria-hidden="true"></i>Productivity</button>
+      </div>
+      <div class="tool-grid" id="toolGrid"></div>
+    </section>
+
+    <section id="amarel">
+      <div class="section-heading">
+        <i data-lucide="server-cog" aria-hidden="true"></i>
+        <h2>Amarel Agent Workflow</h2>
+      </div>
+      <p class="section-intro">Follow the instructions below to let your coding agent access GPUs and run code on Amarel for you.</p>
+      <article class="guide-card">
+        <div class="workflow-grid">
+          <div class="workflow-step">
+            <strong>1. Give the agent the brief</strong>
+            <p>Download the markdown instructions and attach or paste them into the coding agent session.</p>
+          </div>
+          <div class="workflow-step">
+            <strong>2. Confirm Rutgers details</strong>
+            <p>The agent should ask for NetID, project name, CPU or GPU needs, runtime, memory, and output location.</p>
+          </div>
+          <div class="workflow-step">
+            <strong>3. Run through Slurm</strong>
+            <p>The agent should keep heavy compute off the login node, use scratch storage, and pull results back locally.</p>
+          </div>
+        </div>
+        <span class="code-line">ssh amarel 'hostname'</span>
+        <div class="button-row">
+          <a class="button-link" href="amarel_agent_instructions.md" download><i data-lucide="file-down" aria-hidden="true"></i>Download Amarel Agent Brief</a>
+          <a class="button-link secondary" href="amarel_agent_instructions.md" target="_blank" rel="noreferrer noopener"><i data-lucide="book-open" aria-hidden="true"></i>Read the brief</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="faq">
+      <div class="section-heading">
+        <i data-lucide="circle-help" aria-hidden="true"></i>
+        <h2>FAQ</h2>
+      </div>
+      <article class="faq-card">
+        <p><strong>Which button should I use first?</strong> Use ChatGPT for ordinary browser work. Use Codex or Claude Code when you want an agent to work inside files, code, terminals, or remote workflows.</p>
+        <p><strong>Can this help someone with little programming experience?</strong> Yes. Ask the agent to show the plan, exact commands, expected outputs, and rollback path before it runs anything.</p>
+        <p><strong>Do I need special access for Amarel?</strong> Yes. Get access <a href="https://oarc.rutgers.edu/amarel-cluster-access-request/" target="_blank" rel="noreferrer noopener">here</a>.</p>
+        <p><strong>What is the safety rule?</strong> Review code and commands before running them, especially on shared systems, unpublished data, student data, or grant-funded research outputs.</p>
+      </article>
+    </section>
+
+    <footer>Built as a practical starting point for Rutgers academics using AI tools, coding agents, and Amarel.</footer>
   </main>
+
+  <div class="tooltip" id="tooltip" aria-hidden="true"></div>
+
+  <script>
+    const tools = [
+      {
+        name: 'ChatGPT',
+        category: 'Writing',
+        icon: 'message-circle',
+        summary: 'General-purpose assistant for drafting, revision, planning, and explanation.',
+        description: 'Use ChatGPT for emails, syllabi, lecture notes, research summaries, outlines, rubrics, and first-pass code help.',
+        useCases: ['draft lecture notes', 'summarize papers', 'generate exam questions'],
+        link: 'https://chatgpt.com/'
+      },
+      {
+        name: 'Grammarly',
+        category: 'Writing',
+        icon: 'spell-check',
+        summary: 'Editing support for clarity, tone, grammar, and polished academic prose.',
+        description: 'Use Grammarly when the draft already exists and the main need is cleaner, more readable writing.',
+        useCases: ['proofread proposals', 'improve grant text', 'revise public-facing copy'],
+        link: 'https://www.grammarly.com/'
+      },
+      {
+        name: 'Claude',
+        category: 'Research',
+        icon: 'bot',
+        summary: 'Long-form assistant for reading, reasoning, critique, and synthesis.',
+        description: 'Use Claude to explore literature, compare arguments, critique drafts, and reason through long documents.',
+        useCases: ['critique proposals', 'extract key concepts', 'compare methodologies'],
+        link: 'https://claude.ai/'
+      },
+      {
+        name: 'Elicit',
+        category: 'Research',
+        icon: 'library',
+        summary: 'Literature review assistant for finding papers and extracting evidence.',
+        description: 'Use Elicit when the question is about published work and you need paper summaries or evidence tables.',
+        useCases: ['find citations', 'summarize evidence', 'compare authors'],
+        link: 'https://elicit.org/'
+      },
+      {
+        name: 'Perplexity',
+        category: 'Research',
+        icon: 'search',
+        summary: 'Fast web research with cited answers and source links.',
+        description: 'Use Perplexity for current topics, quick background checks, and questions where citations matter.',
+        useCases: ['answer research questions', 'collect citations', 'get concise summaries'],
+        link: 'https://www.perplexity.ai/'
+      },
+      {
+        name: 'Zotero',
+        category: 'Research',
+        icon: 'book-marked',
+        summary: 'Reference manager for collecting, organizing, and exporting citations.',
+        description: 'Use Zotero to keep bibliographies, PDFs, notes, and citation exports organized across projects.',
+        useCases: ['manage citations', 'share bibliographies', 'collect references'],
+        link: 'https://www.zotero.org/'
+      },
+      {
+        name: 'Canva AI',
+        category: 'Teaching',
+        icon: 'palette',
+        summary: 'Design support for lecture slides, posters, handouts, and visuals.',
+        description: 'Use Canva AI when the task is visual communication rather than analysis or code.',
+        useCases: ['design lecture slides', 'produce classroom visuals', 'create student handouts'],
+        link: 'https://www.canva.com/'
+      },
+      {
+        name: 'Pearl',
+        category: 'Teaching',
+        icon: 'graduation-cap',
+        summary: 'Teaching assistant support for feedback, grading notes, and course materials.',
+        description: 'Use Pearl to draft feedback language, quiz explanations, and teaching notes for larger classes.',
+        useCases: ['draft feedback', 'summarize student work', 'generate teaching notes'],
+        link: 'https://www.pearl.ai/'
+      },
+      {
+        name: 'Miro AI',
+        category: 'Teaching',
+        icon: 'network',
+        summary: 'Collaborative whiteboard support for workshops and active learning.',
+        description: 'Use Miro AI to structure brainstorming sessions, group activities, and visual course planning.',
+        useCases: ['plan workshops', 'organize modules', 'design student activities'],
+        link: 'https://miro.com/'
+      },
+      {
+        name: 'Codex CLI',
+        category: 'Productivity',
+        icon: 'terminal',
+        summary: 'Terminal coding agent for local repositories and command-line workflows.',
+        description: 'Use Codex CLI when the agent should inspect files, make edits, run tests, and work inside a project.',
+        useCases: ['edit research code', 'run tests', 'automate terminal tasks'],
+        link: 'https://github.com/openai/codex'
+      },
+      {
+        name: 'GitHub Copilot',
+        category: 'Productivity',
+        icon: 'code-2',
+        summary: 'AI code completion and chat inside editors and GitHub workflows.',
+        description: 'Use Copilot for day-to-day coding assistance inside an IDE or GitHub-hosted project.',
+        useCases: ['write analysis scripts', 'generate boilerplate code', 'translate pseudocode'],
+        link: 'https://github.com/features/copilot'
+      },
+      {
+        name: 'Scribe',
+        category: 'Productivity',
+        icon: 'clipboard-list',
+        summary: 'Workflow recorder that turns repeated tasks into step-by-step guides.',
+        description: 'Use Scribe to document lab procedures, software workflows, or student-facing technical instructions.',
+        useCases: ['document workflows', 'share procedures', 'build tutorials'],
+        link: 'https://scribehow.com/'
+      },
+      {
+        name: 'Notion AI',
+        category: 'Productivity',
+        icon: 'notebook-tabs',
+        summary: 'Workspace assistant for notes, summaries, plans, and project pages.',
+        description: 'Use Notion AI when notes, meetings, project plans, or course materials already live in Notion.',
+        useCases: ['create course outlines', 'summarize meetings', 'build project plans'],
+        link: 'https://www.notion.so/product/ai'
+      }
+    ];
+
+    const toolGrid = document.getElementById('toolGrid');
+    const tooltip = document.getElementById('tooltip');
+    const categoryButtons = document.querySelectorAll('.category-button');
+    let activeCategory = 'Writing';
+
+    function iconMarkup(name) {
+      return `<i data-lucide="${name}" aria-hidden="true"></i>`;
+    }
+
+    function createToolCard(tool) {
+      const card = document.createElement('article');
+      card.className = 'tool-card';
+      card.dataset.category = tool.category;
+      card.dataset.name = tool.name;
+      card.dataset.description = tool.description;
+      card.dataset.useCases = tool.useCases.join(', ');
+      card.dataset.link = tool.link;
+
+      card.innerHTML = `
+        <div class="tool-top">
+          <span class="tool-icon" aria-hidden="true">${iconMarkup(tool.icon)}</span>
+          <h3 class="tool-name">${tool.name}</h3>
+        </div>
+        <div class="tool-category">${tool.category}</div>
+        <p class="tool-summary">${tool.summary}</p>
+        <a class="tool-link" href="${tool.link}" target="_blank" rel="noreferrer noopener">Visit ${tool.name} ${iconMarkup('external-link')}</a>
+      `;
+
+      card.addEventListener('mouseenter', showTooltip);
+      card.addEventListener('mouseleave', hideTooltip);
+      card.addEventListener('mousemove', positionTooltip);
+
+      return card;
+    }
+
+    function renderTools() {
+      toolGrid.innerHTML = '';
+      const visibleTools = tools.filter(tool => tool.category === activeCategory);
+
+      visibleTools.forEach(tool => {
+        toolGrid.append(createToolCard(tool));
+      });
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function showTooltip(event) {
+      const card = event.currentTarget;
+      tooltip.innerHTML = `
+        <h3>${card.dataset.name}</h3>
+        <p>${card.dataset.description}</p>
+        <p><strong>Good for:</strong> ${card.dataset.useCases}</p>
+        <a href="${card.dataset.link}" target="_blank" rel="noreferrer noopener">Open tool</a>
+      `;
+      tooltip.classList.add('visible');
+      tooltip.setAttribute('aria-hidden', 'false');
+      updateTooltipPosition(event);
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove('visible');
+      tooltip.setAttribute('aria-hidden', 'true');
+    }
+
+    function positionTooltip(event) {
+      updateTooltipPosition(event);
+    }
+
+    function updateTooltipPosition(event) {
+      const padding = 18;
+      const tooltipRect = tooltip.getBoundingClientRect();
+      const x = event.clientX + 18;
+      const y = event.clientY + 18;
+      const maxX = window.innerWidth - tooltipRect.width - padding;
+      const maxY = window.innerHeight - tooltipRect.height - padding;
+
+      tooltip.style.left = `${Math.min(x, maxX)}px`;
+      tooltip.style.top = `${Math.min(y, maxY)}px`;
+    }
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        activeCategory = button.dataset.category;
+        renderTools();
+      });
+    });
+
+    window.addEventListener('scroll', hideTooltip);
+    window.addEventListener('resize', hideTooltip);
+    window.addEventListener('load', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+
+    renderTools();
+  </script>
 </body>
 </html>
