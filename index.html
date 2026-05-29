@@ -672,8 +672,8 @@
       </div>
       <p class="section-intro">Browse by academic task. The cards stay short on purpose: pick a category, scan the tools, then open the one that fits the work in front of you.</p>
       <div class="category-bar" role="tablist" aria-label="Tool categories">
-        <button class="category-button active" data-category="Writing" type="button"><i data-lucide="pen-line" aria-hidden="true"></i>Writing</button>
-        <button class="category-button" data-category="Research" type="button"><i data-lucide="search" aria-hidden="true"></i>Research</button>
+        <button class="category-button active" data-category="Research" type="button"><i data-lucide="search" aria-hidden="true"></i>Research</button>
+        <button class="category-button" data-category="Writing" type="button"><i data-lucide="pen-line" aria-hidden="true"></i>Writing</button>
         <button class="category-button" data-category="Teaching" type="button"><i data-lucide="presentation" aria-hidden="true"></i>Teaching</button>
         <button class="category-button" data-category="Productivity" type="button"><i data-lucide="list-checks" aria-hidden="true"></i>Productivity</button>
       </div>
@@ -703,7 +703,7 @@
         </div>
         <div class="notice-card">
           <i data-lucide="shield-check" aria-hidden="true"></i>
-          <p><strong>Off campus?</strong> Connect to the Rutgers VPN first using Cisco AnyConnect or Cisco Secure Client, then let the agent try Amarel. Rutgers VPN setup starts at <a href="https://vpn.rutgers.edu" target="_blank" rel="noreferrer noopener">vpn.rutgers.edu</a>.</p>
+          <p><strong>Off campus?</strong> Connect to the Rutgers VPN first using Cisco AnyConnect or Cisco Secure Client, then let the agent try Amarel. Rutgers VPN setup at <a href="https://vpn.rutgers.edu" target="_blank" rel="noreferrer noopener">vpn.rutgers.edu</a>.</p>
         </div>
         <span class="code-line">ssh amarel 'hostname'</span>
         <div class="button-row">
@@ -734,12 +734,12 @@
   <script>
     const tools = [
       {
-        name: 'ChatGPT',
-        category: 'Writing',
+        name: 'ChatGPT Pro',
+        category: 'Research',
         icon: 'message-circle',
-        summary: 'General-purpose assistant for drafting, revision, planning, and explanation.',
-        description: 'Use ChatGPT for emails, syllabi, lecture notes, research summaries, outlines, rubrics, and first-pass code help.',
-        useCases: ['draft lecture notes', 'summarize papers', 'generate exam questions'],
+        summary: 'General-purpose research assistant for analysis, synthesis, writing, and data work.',
+        description: 'Use ChatGPT Pro for paper summaries, research planning, data analysis, technical explanations, and first-pass code help.',
+        useCases: ['summarize papers', 'analyze data', 'plan research workflows'],
         link: 'https://chatgpt.com/'
       },
       {
@@ -855,7 +855,7 @@
     const toolGrid = document.getElementById('toolGrid');
     const tooltip = document.getElementById('tooltip');
     const categoryButtons = document.querySelectorAll('.category-button');
-    let activeCategory = 'Writing';
+    let activeCategory = 'Research';
 
     function iconMarkup(name) {
       return `<i data-lucide="${name}" aria-hidden="true"></i>`;
